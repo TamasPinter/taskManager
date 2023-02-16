@@ -4,8 +4,8 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const path = require('path');
 const fs = require('fs');
-const { cLog } = require('./middleware/cLog.js');
-const { readFromFile } = require('./helpers/fsUtils');
+const { cLog } = require('./middlewarehelpers/cLog.js');
+const { readFromFile } = require('./middlewarehelpers/fsUtils');
 const api = require('./routes/index.js');
 
 //all middleware
