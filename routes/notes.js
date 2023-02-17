@@ -1,11 +1,11 @@
 //import
-const uuid = require('../middlewarehelpers/uuid');
+const uuid = require('../middlewarehelpers/uuid.js');
 const fb = require('express').Router();
 const { readFromFile, readAndAppend, readAndDelete } = require('../middlewarehelpers/fsUtils');
 
 // get all notes
 fb.get('/', (req, res) =>
-readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data))));
+readFromFile('db/db.json').then((data) => res.json(JSON.parse(data))));
 
 //POST for new note with random ID generator
 fb.post('/', (req, res) => {
@@ -16,7 +16,7 @@ fb.post('/', (req, res) => {
             text,
             note_id: uuid(),
         };
-        readAndAppend(newNote, './db/db.json');
+        readAndAppend(newNote, 'db/db.json');
         const response = {
             status: 'success',
             nody: newNote,

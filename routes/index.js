@@ -1,8 +1,13 @@
 //import
-const express = require('express');
-const app = express();
-const notesRouter = require('./notes');
+const path = require('path');
 
-app.use('/notes', notesRouter);
+module.exports = function(app) {
+    app.get('/', function(req, res) {
+        res.sendFile(path.join(__dirname, '../public/assets/index.html'));
+    });
+    app.get('/notes', function(req, res) {
+        res.sendFile(path.join(__dirname, '../public/assets/notes.html'));
 
-module.exports = app;
+    });
+    }
+}

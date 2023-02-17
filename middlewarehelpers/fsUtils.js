@@ -5,8 +5,8 @@ const fs = require('fs');
 //promisify
 const readFromFile = util.promisify(fs.readFile);
 /** 
-@param {string}
-@param {object}
+@param {string} destination
+@param {object} content
 @returns {void}
 */
 
@@ -14,8 +14,8 @@ const writeToFile = (destination, content) =>
 fs.writeFile(destination, JSON.stringify(content, null, 4), (err) =>
 err ? console.error(err) : console.info(`\nData written to ${destination}`));
 /** 
-@param {string}
-@param {object}
+@param {string} content
+@param {object} file
 @returns {void}
 */
 

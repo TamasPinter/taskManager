@@ -43,15 +43,11 @@ const saveNote = (note) =>
   });
 
 const deleteNote = (id) => {
-  fetch(`/api/notes/${id}`, {
+  fetch(`/api/notes${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
-  })
-  .then(() => {
-    getAndRenderNotes();
-    renderActiveNote();
   })
 };
 
@@ -94,7 +90,11 @@ const handleNoteDelete = (e) => {
     activeNote = {};
   }
 
-  deleteNote(noteId)
+  deleteNote(noteId).then(() => {
+    getAndRenderNotes();
+    renderActiveNote();
+
+  })
 };
 
 // Sets the activeNote and displays it
@@ -133,7 +133,7 @@ const renderNoteList = async (notes) => {
     liEl.classList.add('list-group-item');
 
     const spanEl = document.createElement('span');
-    spanEl.classList.add('list-item-title');
+    //spanEl.classList.add('list-item-title');
     spanEl.innerText = text;
     spanEl.addEventListener('click', handleNoteView);
 
